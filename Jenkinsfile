@@ -47,10 +47,10 @@ pipeline {
     }
     stage('Deploy app to WEB01') {
       steps {
-        sh "ssh web01 rm -rf /home/${SSHUSER}/conduit"
-        sh "scp -r ${WORKSPACE}/conduit-ui/dist web01:/home/${SSHUSER}/conduit"
-        sh "ssh web01 sudo rm -rf ${WWWROOT}/conduit"
-        sh "ssh web01 sudo cp -r /home/${SSHUSER}/conduit ${WWWROOT}/conduit"
+        sh "ssh ec2-3-96-148-7.ca-central-1.compute.amazonaws.com rm -rf /home/${SSHUSER}/conduit"
+        sh "scp -r ${WORKSPACE}/conduit-ui/dist ec2-3-96-148-7.ca-central-1.compute.amazonaws.com:/home/${SSHUSER}/conduit"
+        sh "ssh ec2-3-96-148-7.ca-central-1.compute.amazonaws.com sudo rm -rf ${WWWROOT}/conduit"
+        sh "ssh ec2-3-96-148-7.ca-central-1.compute.amazonaws.com sudo cp -r /home/${SSHUSER}/conduit ${WWWROOT}/conduit"
       }
     }
   }
